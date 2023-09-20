@@ -1,3 +1,5 @@
 {
-  "omnisharp.path": "dotnet"
+  "omnisharp.path": "dotnet",
+  "csharp.format.enable": true,
+  "csharp.referencesCodeLens.enabled": true
 }

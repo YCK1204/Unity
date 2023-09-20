@@ -1,0 +1,27 @@
+﻿<Properties StartupConfiguration="{0F9BD6B2-36BD-C40C-2E39-E9AF8F6ACD71}|">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Coin.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Coin.cs" Line="12" Column="1" />
+      <File FileName="Assets/Scripts/enemy.cs" Line="37" Column="31" />
+      <File FileName="Assets/Scripts/enemySpawn.cs" Line="24" Column="9" NotebookId="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="trashSlayer" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="97875e28-dafe-4a12-96b8-6b363170fdf0" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+</Properties>

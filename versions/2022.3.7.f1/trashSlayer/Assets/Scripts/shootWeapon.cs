@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class shootWeapon : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Weapon;
+    public GameObject []Weapons;
 
     [SerializeField]
     private float createTerm;
@@ -15,11 +15,17 @@ public class shootWeapon : MonoBehaviour
     private Transform weaponTransform;
     private float lastShootTime = 0f;
 
+
     void Update()
     {
-        if (Time.time - lastShootTime > createTerm) {
-            lastShootTime = Time.time;
-            Instantiate(Weapon, weaponTransform.position, Quaternion.identity);
+        if (!GameManager.instance.gameOver)
+        {
+            if (Time.time - lastShootTime > createTerm) {
+                lastShootTime = Time.time;
+                GameManager instance = FindObjectOfType<GameManager>();
+                int level = instance.currentLevel;
+                Instantiate(Weapons[level], weaponTransform.position, Quaternion.identity);
+            }
         }
     }
 }

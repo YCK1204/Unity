@@ -5,32 +5,47 @@ public class enemySpawn : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] Enemies;
-    private float[] arrPosX = { -2.2f, -1.1f, 0f, 1.1f, 2,2f };
 
-    private int currentLevel = 0;    
-    private void Start() {
-        StartCoroutine("EnemyRoutine");
-    }
+    [SerializeField]
+    private GameObject Boss;
 
     [SerializeField]
     private float enemySpawnInterval = 2f;
 
+    private float[] arrPosX = { -2.2f, -1.1f, 0f, 1.1f, 2,2f };
+
+    private int currentLevel = 0;
     private int spawnCount = 0;
+
+    private void Start() {
+        StartCoroutine("EnemyRoutine");
+    }
+
+    public void stopRoutine()
+    {
+        StopCoroutine("EnemyRoutine");
+    }
+
     IEnumerator EnemyRoutine() {
         yield return new WaitForSeconds(3);
 
         while (true) {
+            if (GameManager.instance.gameOver)
+            {
+                stopRoutine();
+                yield return null;
+            }
             for (int i = 0; i < 5; i++) {
                 int idx = Random.Range(0, currentLevel);
                 SpawnEnemy(arrPosX[i], idx);
             }
             spawnCount++;
-            if (spawnCount == 10) {
+            if (spawnCount % 2 == 0) {
                 currentLevel++;
                 if (currentLevel >= Enemies.Length) {
-                    currentLevel = Enemies.Length - 1;
+                    currentLevel = 0;
+                    Instantiate(Boss);
                 }
-                spawnCount = 0;
             }
             yield return new WaitForSeconds(enemySpawnInterval);
         }

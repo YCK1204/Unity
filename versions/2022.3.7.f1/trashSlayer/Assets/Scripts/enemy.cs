@@ -2,7 +2,10 @@ using UnityEngine;
 
 public class enemy : MonoBehaviour
 {
-    private float moveSpeed = 10f;
+    [SerializeField]
+     float moveSpeed = 10f;
+    [SerializeField]
+    GameObject Coin;
 
     [SerializeField]
     private float hp;
@@ -21,15 +24,27 @@ public class enemy : MonoBehaviour
         if (other.gameObject.tag == "Weapon") {
             GameObject Weapon = other.gameObject;
             weapon weapon = Weapon.GetComponent<weapon>();
-            beAttack(weapon.damage);        
+            beAttacked(weapon.damage);
             Destroy(other.gameObject);
         }
     }
+    
 
-    void beAttack(float damage) {
+    void beAttacked(float damage) {
         this.hp -= damage;
         if (this.hp <= 0) {
+            Coin.transform.position = gameObject.transform.position;
+            Instantiate(Coin);
             Destroy(gameObject);
+            if (gameObject.tag == "Boss")
+                GameManager.instance.GameOver();
         }
     }
+
+    
+
+    //private void OnDestroy()
+    //{
+    //    Resources.UnloadUnusedAssets();
+    //}
 }
